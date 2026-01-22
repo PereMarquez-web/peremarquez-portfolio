@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="/src/css/main.css" />
+  <link rel="stylesheet" href="/src/css/header.css" />
+  <link rel="stylesheet" href="/src/css/footer.css" />
+  <link rel="stylesheet" href="/src/css/hero.css" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
+
+  <title>Pere Márquez · Portfolio</title>
+</head>
+
+<body>
+  <main>
+    <section id="home" class="section-hero">
+        <div class="hero-chips" aria-hidden="true">
+            <div id="chip-frontend" class="chip chip--role" style="left:390px; top:290px;">Front-end</div>
+            <div id="chip-uxui" class="chip chip--role" style="left:60px; top:480px;">UX &amp; UI</div>
+            <div id="chip-webdesign" class="chip chip--role" style="left:220px; top:610px;">Web Design</div>
+            <div id="chip-creative" class="chip chip--role" style="left:120px; top:785px;">Creative direction</div>
+            <div id="chip-ecommerce" class="chip chip--role" style="left:420px; top:700px;">E-commerce</div>
+
+            <div id="chip-figma" class="chip chip--tech" style="right:640px; top:150px;">Figma</div>
+            <div id="chip-react" class="chip chip--tech" style="right:140px; top:240px;">React</div>
+            <div id="chip-gsap" class="chip chip--tech" style="right:340px; top:360px;">GSAP</div>
+            <div id="chip-js" class="chip chip--tech" style="right:160px; top:440px;">JavaScript</div>
+            <div id="chip-shopify" class="chip chip--tech" style="right:260px; top:610px;">Shopify</div>
+            <div id="chip-wcag" class="chip chip--tech" style="right:540px; top:740px;">WCAG</div>
+        </div>
+
+
+
+
+      <div class="hero-center">
+        <h1 class="hero-title">Pere Márquez</h1>
+        <a class="hero-cta" href="#projects">
+          View my projects <span class="cta-icon">↗</span>
+        </a>
+      </div>
+    </section>
+
+    <section id="projects" style="min-height:100vh;"></section>
+    <section id="experience" style="min-height:100vh;"></section>
+    <section id="about" style="min-height:100vh;"></section>
+    <section id="contact" style="min-height:70vh;"></section>
+  </main>
+
+  <script type="module">
+    import { mountHeader } from "/src/js/header.js";
+    import { mountFooter } from "/src/js/footer.js";
+    mountHeader({ brandHref: "#home" });
+    mountFooter();
+  </script>
+
+  <script type="module" src="/src/js/hero.js"></script>
+</body>
+</html>

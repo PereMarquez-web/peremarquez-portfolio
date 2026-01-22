@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/src/css/main.css" />
+    <link rel="stylesheet" href="/src/css/header.css" />
+    <link rel="stylesheet" href="/src/css/footer.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
+    <title>Pere Márquez · Projects</title>
+</head>
+<body>
+    
+</body>
+<script type="module">
+  import { mountFooter } from "/src/js/footer.js";
+  mountFooter();
+</script>
+<script type="module">
+  import { mountHeader } from "/src/js/header.js";
+
+  mountHeader({ brandHref: "/#home" });
+
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll('.site-header a[data-nav="1"], .mobile-drawer a[data-nav="1"]').forEach(a => {
+      const href = a.getAttribute("href");
+      if (href.startsWith("#")) a.setAttribute("href", `/${href}`);
+    });
+  });
+</script>
+
+</html>

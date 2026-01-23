@@ -1,0 +1,130 @@
+/* =========================
+   ABOUT (same base structure as Contact)
+========================= */
+
+.section-about{
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.about{
+  width: 100%;
+}
+
+/* Eyebrow (tú dijiste 14px) */
+.about__eyebrow{
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.03em;
+  color: var(--ink);
+  margin-bottom: 56px;
+}
+
+/* Grid centrado como Contact */
+.about__grid{
+  width: min(980px, 100%);
+  margin: 0 auto;
+  display: grid;
+  gap: 22px;
+}
+
+/* Mantenemos "row", pero lo hacemos 1 columna visual */
+.about__row{
+  display: grid;
+  grid-template-columns: 1fr; /* <- clave para que no parezca tabla */
+}
+
+/* No mostramos labels (pero la estructura existe) */
+.about__label{
+  display: none;
+}
+
+.about__value{
+  font-family: var(--mono);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: 0.03em;
+  color: var(--ink);
+  max-width: 760px; /* como se ve en tu diseño */
+}
+
+/* Title */
+.about__title{
+  margin: 0 0 6px;
+  font-family: var(--mono);
+  font-weight: 700;
+  font-size: 37px;
+  line-height: 1.25;
+  letter-spacing: 0.03em;
+}
+
+/* Small headings (WHAT I FOCUS ON / HOW I WORK / TOOLS & STACK) */
+.about__kicker{
+  margin-top: 10px;
+  margin-bottom: 8px;
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: rgba(17,17,17,0.75);
+  text-transform: uppercase;
+}
+
+/* Lists exactly plain */
+.about__list{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.about__list li{
+  margin: 0 0 4px;
+}
+
+/* Chips (como los tuyos de About) */
+.about__chips{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+/* mismos chips que ya usas: altura 37, texto 12, border naranja */
+.about__chip{
+  height: 37px;
+  display: inline-flex;
+  align-items: center;
+  padding: 15px 14px; /* vertical/horizontal como dijiste */
+  border-radius: 999px;
+  border: 1px solid rgba(255,127,42,0.7);
+  color: rgba(17,17,17,0.9);
+  font-family: var(--mono);
+  font-weight: 400;
+  font-size: 12px;
+  letter-spacing: 0.03em;
+  line-height: 1;
+}
+
+/* Bottom vacío: lo dejamos sin ocupar */
+.about__bottom{
+  height: 0;
+}
+
+/* Mobile */
+@media (max-width: 720px){
+  .section-about{
+    align-items: flex-start;
+    padding: 120px 0 80px;
+  }
+
+  .about__title{
+    font-size: 18px;
+  }
+
+  .about__value{
+  font-size: 12px;
+    }
+}

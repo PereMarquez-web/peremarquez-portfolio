@@ -20,7 +20,7 @@ html,body{ height:100%; }
 body{
   margin:0;
   font-family:var(--mono);
-  background:var(--bg);
+  background:#f0f0f0;
   color:var(--ink);
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;

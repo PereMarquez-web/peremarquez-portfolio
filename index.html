@@ -8,6 +8,11 @@
   <link rel="stylesheet" href="/src/css/header.css" />
   <link rel="stylesheet" href="/src/css/footer.css" />
   <link rel="stylesheet" href="/src/css/hero.css" />
+  <link rel="stylesheet" href="/src/css/experience.css" />
+  <link rel="stylesheet" href="/src/css/contact.css" />
+  <link rel="stylesheet" href="/src/css/about.css" />
+
+
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,7 +24,10 @@
 <body>
   <main>
     <section id="home" class="section-hero">
-        <div class="hero-chips" aria-hidden="true">
+
+        <!-- SCREEN 1 -->
+        <div class="hero-screen hero-screen--one">
+            <div class="hero-chips" aria-hidden="true">
             <div id="chip-frontend" class="chip chip--role" style="left:390px; top:290px;">Front-end</div>
             <div id="chip-uxui" class="chip chip--role" style="left:60px; top:480px;">UX &amp; UI</div>
             <div id="chip-webdesign" class="chip chip--role" style="left:220px; top:610px;">Web Design</div>
@@ -32,32 +40,384 @@
             <div id="chip-js" class="chip chip--tech" style="right:160px; top:440px;">JavaScript</div>
             <div id="chip-shopify" class="chip chip--tech" style="right:260px; top:610px;">Shopify</div>
             <div id="chip-wcag" class="chip chip--tech" style="right:540px; top:740px;">WCAG</div>
+            </div>
+
+            <div class="hero-center">
+            <h1 class="hero-title">Pere Márquez</h1>
+            <a class="hero-cta" href="#projects">
+                View my projects <span class="cta-icon">↗</span>
+            </a>
+            </div>
         </div>
 
+        <!-- SCREEN 2 -->
+        <div class="hero-screen hero-screen--two">
+            <div class="hero-second">
+            <div class="hero-second__inner">
+                <h2 class="hero-second__title">
+                <span class="muted">Creative Front-End Developer,</span><br />
+                <span class="accent">crafting thoughtful digital experiences</span>
+                </h2>
 
+                <p class="hero-second__subtitle">
+                From concept to production, with systems, motion and detail.<br />
+                Strong UX mindset, clean implementation, scalable thinking.
+                </p>
 
+                <div class="hero-second__actions">
+                <a class="btn btn--primary" href="#projects">
+                    View my projects <span class="cta-icon">↗</span>
+                </a>
 
-      <div class="hero-center">
-        <h1 class="hero-title">Pere Márquez</h1>
-        <a class="hero-cta" href="#projects">
-          View my projects <span class="cta-icon">↗</span>
-        </a>
-      </div>
+                <a class="btn btn--ghost" href="#contact">
+                    Contact
+                </a>
+                </div>
+
+                <div class="hero-second__meta">
+                FRONT END · UX / UI · E-COMMERCE · UK/SPAIN
+                </div>
+            </div>
+            </div>
+        </div>
+
     </section>
 
     <section id="projects" style="min-height:100vh;"></section>
-    <section id="experience" style="min-height:100vh;"></section>
-    <section id="about" style="min-height:100vh;"></section>
-    <section id="contact" style="min-height:70vh;"></section>
+
+    <section id="experience" class="section-experience">
+      <div class="container experience">
+        <div class="experience__eyebrow">Experience</div>
+
+        <div class="experience__grid">
+          <div class="experience__title">
+            <h2>Professional experience &amp; education</h2>
+          </div>
+
+          <div class="experience__content">
+            <!-- Tabs (subtle) -->
+            <div class="exp-tabs" role="tablist" aria-label="Experience tabs">
+              <button
+                class="exp-tab is-active"
+                type="button"
+                role="tab"
+                aria-selected="true"
+                aria-controls="panel-work"
+                id="tab-work"
+                data-tab="work"
+              >
+                WORK
+              </button>
+
+              <button
+                class="exp-tab"
+                type="button"
+                role="tab"
+                aria-selected="false"
+                aria-controls="panel-education"
+                id="tab-education"
+                data-tab="education"
+              >
+                EDUCATION
+              </button>
+            </div>
+
+            <!-- Panels -->
+            <div class="exp-panels">
+              <!-- WORK PANEL -->
+              <div
+                class="exp-panel is-active"
+                role="tabpanel"
+                id="panel-work"
+                aria-labelledby="tab-work"
+                data-panel="work"
+              >
+                <div class="exp-item">
+                  <div class="exp-item__title">Front-End Developer &amp; QA Tester — NTT Data</div>
+                  <div class="exp-item__date">09/2023 — 11/2023</div>
+                  <div class="exp-item__desc">
+                    Supported front-end development and testing tasks, contributing to responsive UI implementation and bug fixing.
+                  </div>
+                </div>
+
+                <div class="exp-item">
+                  <div class="exp-item__title">Founder &amp; Web Developer — Holy Snkrs</div>
+                  <div class="exp-item__date">06/2021 — 09/2024</div>
+                  <div class="exp-item__desc">
+                    Turned a resale business into a Shopify store, handling product uploads, catalog structure, filtering, UX flows and customer communication.
+                  </div>
+                </div>
+
+                <div class="exp-item">
+                  <div class="exp-item__title">Lead Web Designer &amp; Developer — Just Be PONTE</div>
+                  <div class="exp-item__date">05/2025 — 12/2025</div>
+                  <div class="exp-item__desc">
+                    Designed and developed the full Shopify experience from identity to launch, delivering UX/UI, custom Liquid components and conversion-focused pages.
+                  </div>
+                </div>
+
+                <div class="exp-item">
+                  <div class="exp-item__title">Full-Stack Developer — Jeanologia</div>
+                  <div class="exp-item__date">05/2025 — Present</div>
+                  <div class="exp-item__desc">
+                    Building internal web apps with Angular and Node.js, collaborating in Agile teams while improving UX and implementing scalable UI features.
+                  </div>
+                </div>
+              </div>
+
+              <!-- EDUCATION PANEL -->
+              <div
+                class="exp-panel"
+                role="tabpanel"
+                id="panel-education"
+                aria-labelledby="tab-education"
+                data-panel="education"
+                hidden
+              >
+                <div class="exp-item exp-item--compact">
+                  <div class="exp-item__title">Bachelor in Interactive Technologies — UPV</div>
+                  <div class="exp-item__date">2019 — 2023</div>
+                </div>
+
+                <div class="exp-item exp-item--compact">
+                  <div class="exp-item__title">Samsung Innovation Campus x UPV — Artificial Intelligence</div>
+                  <div class="exp-item__date">2022 · Best project award</div>
+                </div>
+
+                <div class="exp-item exp-item--compact">
+                  <div class="exp-item__title">Erasmus+ — Thomas More, Belgium</div>
+                  <div class="exp-item__date">2023 · ICT Program</div>
+                </div>
+
+                <div class="exp-item exp-item--compact">
+                  <div class="exp-item__title">MSc in Web Development — University of Roehampton</div>
+                  <div class="exp-item__date">2024 — 2025 · Distinction</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Always visible -->
+            <div class="exp-stack">
+              <div class="exp-label">CORE STACK</div>
+
+              <div class="exp-chips" role="list">
+                <span class="exp-chip" role="listitem">React</span>
+                <span class="exp-chip" role="listitem">Angular</span>
+                <span class="exp-chip" role="listitem">Node.js</span>
+                <span class="exp-chip" role="listitem">Shopify Liquid</span>
+                <span class="exp-chip" role="listitem">Tailwind</span>
+                <span class="exp-chip" role="listitem">Redis</span>
+                <span class="exp-chip" role="listitem">Docker</span>
+                <span class="exp-chip" role="listitem">Git</span>
+                <span class="exp-chip" role="listitem">SCRUM</span>
+              </div>
+
+              <a class="exp-cv" href="/src/assets/PereMarquez-cv.pdf" download>
+                DOWNLOAD CV (PDF)
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section-about">
+      <div class="container">
+        <div class="about">
+          <div class="about__eyebrow">About</div>
+
+          <div class="about__grid" aria-label="About content">
+            <!-- TITLE -->
+            <div class="about__row about__row--title">
+              <div class="about__label"></div>
+              <div class="about__value">
+                <h2 class="about__title">
+                  Creative front-end developer focused on UX and eCommerce.
+                </h2>
+              </div>
+            </div>
+
+            <!-- PARAGRAPH 1 -->
+            <div class="about__row">
+              <div class="about__label"></div>
+              <div class="about__value">
+                I work at the intersection of design, front-end development and product thinking. My focus is building clear, well-
+                structured digital experiences where visual decisions are intentional and directly connected to user experience and
+                business goals.
+              </div>
+            </div>
+
+            <!-- PARAGRAPH 2 -->
+            <div class="about__row">
+              <div class="about__label"></div>
+              <div class="about__value">
+                I’m particularly interested in front-end craft, interaction, and translating design systems into scalable, maintainable
+                interfaces. I enjoy working closely with designers, product teams and other developers to shape thoughtful, high-quality
+                web experiences.
+              </div>
+            </div>
+
+            <!-- WHAT I FOCUS ON -->
+            <div class="about__row">
+              <div class="about__label"></div>
+              <div class="about__value">
+                <div class="about__kicker">WHAT I FOCUS ON</div>
+                <ul class="about__list">
+                  <li>UX-driven interfaces and systems</li>
+                  <li>Creative front-end implementation</li>
+                  <li>Shopify & eCommerce experiences</li>
+                  <li>Interaction, motion and detail</li>
+                  <li>Design-to-development collaboration</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- HOW I WORK -->
+            <div class="about__row">
+              <div class="about__label"></div>
+              <div class="about__value">
+                <div class="about__kicker">HOW I WORK</div>
+                <ul class="about__list">
+                  <li>Clear structure before visuals</li>
+                  <li>Strong attention to detail</li>
+                  <li>Iterative and collaborative mindset</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- TOOLS & STACK -->
+            <div class="about__row">
+              <div class="about__label"></div>
+              <div class="about__value">
+                <div class="about__kicker">TOOLS & STACK</div>
+
+                <div class="about__chips">
+                  <span class="about__chip">React</span>
+                  <span class="about__chip">Angular</span>
+                  <span class="about__chip">Shopify Liquid</span>
+                  <span class="about__chip">Figma</span>
+                  <span class="about__chip">Tailwind</span>
+                  <span class="about__chip">GSAP</span>
+                  <span class="about__chip">CSS</span>
+                  <span class="about__chip">HTML</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mantenemos el bloque bottom por coherencia estructural,
+              pero lo dejamos vacío (o lo puedes borrar si prefieres).
+          -->
+          <div class="about__bottom" aria-hidden="true"></div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <section id="contact" class="section-contact">
+      <div class="container">
+        <div class="contact">
+          <div class="contact__eyebrow">Contact</div>
+
+          <div class="contact__grid" aria-label="Contact details">
+            <div class="contact__row">
+              <div class="contact__label">Email</div>
+              <div class="contact__value-wrap">
+                <a class="contact__value contact__link" href="mailto:pere.marquez@icloud.com" data-copy="pere.marquez@icloud.com">
+                  pere.marquez@icloud.com
+                </a>
+                <button
+                  class="copy-btn"
+                  aria-label="Copy to clipboard"
+                  data-tooltip="Copy to clipboard"
+                >
+                  ⧉
+                </button>
+
+              </div>
+              
+            </div>
+
+            <div class="contact__row">
+              <div class="contact__label">Linkedin</div>
+              <div class="contact__value-wrap">
+                <a class="contact__value contact__link" href="https://www.linkedin.com/in/pere-marquez-barber" target="_blank" rel="noreferrer" data-copy="linkedin.com/in/pere-marquez-barber">
+                  linkedin.com/in/pere-marquez-barber
+                </a>
+                <button
+                  class="copy-btn"
+                  aria-label="Copy to clipboard"
+                  data-tooltip="Copy to clipboard"
+                >
+                  ⧉
+                </button>
+              </div>
+              
+            </div>
+
+            <div class="contact__row">
+              <div class="contact__label">Phone (España)</div>
+              <div class="contact__value-wrap">
+                <a class="contact__value contact__link" href="tel:+34616290485" data-copy="+34616290485">
+                  +34 616 290 485
+                </a>
+                <button
+                  class="copy-btn"
+                  aria-label="Copy to clipboard"
+                  data-tooltip="Copy to clipboard"
+                >
+                  ⧉
+                </button>
+              </div>
+              
+            </div>
+
+            <div class="contact__row">
+              <div class="contact__label">Phone (UK)</div>      
+              <div class="contact__value-wrap">
+                <a class="contact__value contact__link" href="tel:+447438950241" data-copy="+447438950241">
+                +44 7438 950 241
+                </a>
+                <button
+                  class="copy-btn"
+                  aria-label="Copy to clipboard"
+                  data-tooltip="Copy to clipboard"
+                >
+                  ⧉
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact__bottom">
+            <div class="contact__note">
+              Email preferred. WhatsApp available for scheduled calls.
+            </div>
+
+            <a class="contact__download" href="/src/assets/peremarquez-cv.pdf" download>
+              Download CV (PDF)
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <script type="module">
     import { mountHeader } from "/src/js/header.js";
     import { mountFooter } from "/src/js/footer.js";
+    import { initExperienceTabs } from "/src/js/experience.js";
+    import { initContactCopy } from "/src/js/contact.js";
+ 
     mountHeader({ brandHref: "#home" });
+    initExperienceTabs();
+    initContactCopy();
     mountFooter();
   </script>
-
+  
+  <script type="module" src="/src/js/contact-copy.js"></script>
   <script type="module" src="/src/js/hero.js"></script>
 </body>
 </html>

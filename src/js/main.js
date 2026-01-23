@@ -15,3 +15,9 @@ document.addEventListener("click", (e) => {
   const y = target.getBoundingClientRect().top + window.scrollY - headerHeight();
   window.scrollTo({ top: y, behavior: "smooth" });
 });
+
+document.addEventListener("click", (e) => {
+  const a = e.target.closest(".exp-cv");
+  if (!a) return;
+  a.setAttribute("download", "");
+});

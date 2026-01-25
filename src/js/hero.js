@@ -12,6 +12,7 @@ function initHeroDraggableChips() {
 
   if (!screenOne || chips.length === 0) return;
 
+  // mejor para touch/trackpad
   chips.forEach((chip) => (chip.style.touchAction = "none"));
 
   Draggable.create(chips, {
@@ -28,8 +29,9 @@ function initHeroDraggableChips() {
 }
 
 /* ---------------------------
-   2) AUTO JUMP SCROLL (one <-> two)
-   - intercept wheel only inside #home
+   2) HERO STEP SCROLL (one <-> two)
+   - 1 wheel gesture = 1 snap
+   - does NOT "push" scroll into projects (fixes skip)
 ---------------------------- */
 function initHeroAutoScroll() {
   const home = document.querySelector("#home");
@@ -38,93 +40,105 @@ function initHeroAutoScroll() {
 
   if (!home || !one || !two) return;
 
+  // tuning
+  const THRESHOLD = 60;      // trackpad delta accumulation
+  const COOLDOWN_MS = 700;   // lock to avoid double step
+  const ANIM_MS = 520;       // duration match to your smooth scroll timing
+
   let isAnimating = false;
+  let locked = false;
   let wheelAccum = 0;
-  let wheelResetTimer = null;
+  let resetTimer = null;
 
   const isMenuOpen = () => document.body.classList.contains("menu-open");
+
+  function lock() {
+    locked = true;
+    window.setTimeout(() => (locked = false), COOLDOWN_MS);
+  }
 
   function getTop(el) {
     const r = el.getBoundingClientRect();
     return window.scrollY + r.top;
   }
 
-  function goTo(targetEl) {
-    if (isAnimating) return;
-    isAnimating = true;
-
-    const targetTop = getTop(targetEl);
-
-    // scroll suave controlado (sin ScrollToPlugin)
-    window.scrollTo({ top: targetTop, behavior: "smooth" });
-
-    // libera el lock tras un rato (ajusta si quieres más rápido/lento)
-    window.setTimeout(() => {
-      isAnimating = false;
-      wheelAccum = 0;
-    }, 520);
-  }
-
   function inHomeRange() {
-    const homeTop = getTop(home);
-    const homeBottom = homeTop + home.offsetHeight;
-    const y = window.scrollY + 2; // pequeño margen
-    return y >= homeTop && y < homeBottom;
+    // “Estoy dentro del hero” cuando el hero ocupa el viewport
+    const rect = home.getBoundingClientRect();
+    return rect.top <= 0 && rect.bottom >= window.innerHeight;
   }
 
   function whichScreenIsVisible() {
-    // Decidimos según qué pantalla está más cerca del top del viewport
-    const oneTopDist = Math.abs(one.getBoundingClientRect().top);
-    const twoTopDist = Math.abs(two.getBoundingClientRect().top);
-    return oneTopDist <= twoTopDist ? "one" : "two";
+    const d1 = Math.abs(one.getBoundingClientRect().top);
+    const d2 = Math.abs(two.getBoundingClientRect().top);
+    return d1 <= d2 ? "one" : "two";
+  }
+
+  function goTo(targetEl) {
+    if (isAnimating) return;
+
+    isAnimating = true;
+    lock();          // clave para que un gesto no dispare 2 veces
+    wheelAccum = 0;
+
+    const y = getTop(targetEl);
+
+    window.scrollTo({ top: y, behavior: "smooth" });
+
+    window.setTimeout(() => {
+      // hard snap (evita quedarse “a medias”)
+      window.scrollTo(0, Math.round(y));
+      isAnimating = false;
+    }, ANIM_MS);
   }
 
   function onWheel(e) {
-    if (isMenuOpen()) return;          // si menú abierto, no interceptamos
-    if (!inHomeRange()) return;        // solo dentro de #home
-    if (isAnimating) { e.preventDefault(); return; }
+    if (isMenuOpen()) return;
+    if (!inHomeRange()) return;
 
-    // Evita el scroll “a medias”
-    e.preventDefault();
+    // Si está locked/animating, cancelamos dentro del hero
+    if (locked || isAnimating) {
+      e.preventDefault();
+      return;
+    }
 
-    // acumulamos para trackpad (muchos deltas pequeños)
+    // acumulamos delta (trackpad)
     wheelAccum += e.deltaY;
+    clearTimeout(resetTimer);
+    resetTimer = window.setTimeout(() => (wheelAccum = 0), 120);
 
-    clearTimeout(wheelResetTimer);
-    wheelResetTimer = setTimeout(() => (wheelAccum = 0), 120);
-
-    const threshold = 60; // sensibilidad (baja a 40 si quieres más rápido)
-    if (Math.abs(wheelAccum) < threshold) return;
+    if (Math.abs(wheelAccum) < THRESHOLD) return;
 
     const dirDown = wheelAccum > 0;
     wheelAccum = 0;
 
     const visible = whichScreenIsVisible();
 
+    // ---- REGLA CLAVE:
+    // Solo hacemos preventDefault cuando vamos a SNAP (one <-> two).
+    // Si estamos en screen two y bajamos, dejamos scroll normal (para entrar a projects),
+    // pero ponemos lock para que no se coma el primer snap de projects.
     if (dirDown) {
-      // one -> two, o two -> salir al siguiente section (projects)
       if (visible === "one") {
+        e.preventDefault();
         goTo(two);
       } else {
-        // si estás en two y sigues bajando, dejas que el scroll siga normal:
-        // hacemos "unlock" y permitimos que siga, pero ya sin preventDefault
-        isAnimating = true;
-        setTimeout(() => (isAnimating = false), 180);
-        window.scrollBy({ top: window.innerHeight * 0.9, behavior: "smooth" });
+        // visible === "two" y bajamos -> dejar scroll normal
+        // (pero bloquea un gesto para evitar doble salto en projects)
+        lock();
+        // NO preventDefault, NO scrollBy, NO smooth extra
       }
     } else {
-      // subiendo: two -> one, o one -> dejar que suba al header/top
       if (visible === "two") {
+        e.preventDefault();
         goTo(one);
       } else {
-        isAnimating = true;
-        setTimeout(() => (isAnimating = false), 180);
-        window.scrollBy({ top: -window.innerHeight * 0.9, behavior: "smooth" });
+        // visible === "one" y subimos -> dejar scroll normal
+        lock();
       }
     }
   }
 
-  // importantísimo: passive:false para poder preventDefault
   window.addEventListener("wheel", onWheel, { passive: false });
 }
 

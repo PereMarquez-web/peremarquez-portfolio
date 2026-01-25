@@ -18,14 +18,6 @@ export function mountFooter(){
             <p class="footer-text footer-role">Creative Front-End Developer</p>
           </div>
 
-          <nav class="footer-nav" aria-label="Footer navigation">
-            <a href="${normalizeHref("#home")}">Home</a>
-            <a href="${normalizeHref("#projects")}">Projects</a>
-            <a href="${normalizeHref("#experience")}">Experience</a>
-            <a href="${normalizeHref("#about")}">About</a>
-            <a href="${normalizeHref("#contact")}">Contact</a>
-          </nav>
-
           <div class="footer-right" aria-label="Footer context">
             <p>Based in UK / Spain</p>
             <p>Open to creative teams &amp; roles</p>

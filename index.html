@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="/src/css/experience.css" />
   <link rel="stylesheet" href="/src/css/contact.css" />
   <link rel="stylesheet" href="/src/css/about.css" />
+  <link rel="stylesheet" href="/src/css/projects.css" />
 
 
 
@@ -83,7 +84,17 @@
 
     </section>
 
-    <section id="projects" style="min-height:100vh;"></section>
+    <section id="projects" class="section-projects">
+      <div class="projects">
+        <div class="container-projects">
+          <div class="projects__eyebrow">Selected Projects</div>
+        </div>
+
+        <div class="projects__stack" data-projects-stack></div>
+      </div>
+    </section>
+
+
 
     <section id="experience" class="section-experience">
       <div class="container experience">
@@ -222,96 +233,89 @@
     </section>
 
     <section id="about" class="section-about">
-      <div class="container">
-        <div class="about">
-          <div class="about__eyebrow">About</div>
+  <div class="container">
+    <div class="about">
+      <div class="about__eyebrow">About</div>
 
-          <div class="about__grid" aria-label="About content">
-            <!-- TITLE -->
-            <div class="about__row about__row--title">
-              <div class="about__label"></div>
-              <div class="about__value">
-                <h2 class="about__title">
-                  Creative front-end developer focused on UX and eCommerce.
-                </h2>
-              </div>
-            </div>
+      <div class="about__grid" aria-label="About content">
+        <!-- TITLE -->
+        <div class="about__row about__row--title">
+          <div class="about__value">
+            <h2 class="about__title">
+              Creative front-end developer focused on UX and eCommerce.
+            </h2>
+          </div>
+        </div>
 
-            <!-- PARAGRAPH 1 -->
-            <div class="about__row">
-              <div class="about__label"></div>
-              <div class="about__value">
-                I work at the intersection of design, front-end development and product thinking. My focus is building clear, well-
-                structured digital experiences where visual decisions are intentional and directly connected to user experience and
-                business goals.
-              </div>
-            </div>
+        <!-- PARAGRAPH 1 -->
+        <div class="about__row">
+          <div class="about__value">
+            I work at the intersection of design, front-end development and product thinking. My focus is building clear, well-
+            structured digital experiences where visual decisions are intentional and directly connected to user experience and
+            business goals.
+          </div>
+        </div>
 
-            <!-- PARAGRAPH 2 -->
-            <div class="about__row">
-              <div class="about__label"></div>
-              <div class="about__value">
-                I’m particularly interested in front-end craft, interaction, and translating design systems into scalable, maintainable
-                interfaces. I enjoy working closely with designers, product teams and other developers to shape thoughtful, high-quality
-                web experiences.
-              </div>
-            </div>
+        <!-- PARAGRAPH 2 -->
+        <div class="about__row">
+          <div class="about__value">
+            I’m particularly interested in front-end craft, interaction, and translating design systems into scalable, maintainable
+            interfaces. I enjoy working closely with designers, product teams and other developers to shape thoughtful, high-quality
+            web experiences.
+          </div>
+        </div>
 
-            <!-- WHAT I FOCUS ON -->
-            <div class="about__row">
-              <div class="about__label"></div>
-              <div class="about__value">
-                <div class="about__kicker">WHAT I FOCUS ON</div>
-                <ul class="about__list">
-                  <li>UX-driven interfaces and systems</li>
-                  <li>Creative front-end implementation</li>
-                  <li>Shopify & eCommerce experiences</li>
-                  <li>Interaction, motion and detail</li>
-                  <li>Design-to-development collaboration</li>
-                </ul>
-              </div>
-            </div>
+        <!-- WHAT I FOCUS ON -->
+        <div class="about__row">
+          <div class="about__value">
+            <div class="about__kicker">WHAT I FOCUS ON</div>
+            <ul class="about__list">
+              <li>UX-driven interfaces and systems</li>
+              <li>Creative front-end implementation</li>
+              <li>Shopify &amp; eCommerce experiences</li>
+              <li>Interaction, motion and detail</li>
+              <li>Design-to-development collaboration</li>
+            </ul>
+          </div>
+        </div>
 
-            <!-- HOW I WORK -->
-            <div class="about__row">
-              <div class="about__label"></div>
-              <div class="about__value">
-                <div class="about__kicker">HOW I WORK</div>
-                <ul class="about__list">
-                  <li>Clear structure before visuals</li>
-                  <li>Strong attention to detail</li>
-                  <li>Iterative and collaborative mindset</li>
-                </ul>
-              </div>
-            </div>
+        <!-- HOW I WORK -->
+        <div class="about__row">
+          <div class="about__value">
+            <div class="about__kicker">HOW I WORK</div>
+            <ul class="about__list">
+              <li>Clear structure before visuals</li>
+              <li>Strong attention to detail</li>
+              <li>Iterative and collaborative mindset</li>
+            </ul>
+          </div>
+        </div>
 
-            <!-- TOOLS & STACK -->
-            <div class="about__row">
-              <div class="about__label"></div>
-              <div class="about__value">
-                <div class="about__kicker">TOOLS & STACK</div>
+        <!-- TOOLS & STACK -->
+        <div class="about__row">
+          <div class="about__value">
+            <div class="about__kicker">TOOLS &amp; STACK</div>
 
-                <div class="about__chips">
-                  <span class="about__chip">React</span>
-                  <span class="about__chip">Angular</span>
-                  <span class="about__chip">Shopify Liquid</span>
-                  <span class="about__chip">Figma</span>
-                  <span class="about__chip">Tailwind</span>
-                  <span class="about__chip">GSAP</span>
-                  <span class="about__chip">CSS</span>
-                  <span class="about__chip">HTML</span>
-                </div>
-              </div>
+            <div class="about__chips">
+              <span class="about__chip">React</span>
+              <span class="about__chip">Angular</span>
+              <span class="about__chip">Shopify Liquid</span>
+              <span class="about__chip">Figma</span>
+              <span class="about__chip">Tailwind</span>
+              <span class="about__chip">GSAP</span>
+              <span class="about__chip">CSS</span>
+              <span class="about__chip">HTML</span>
             </div>
           </div>
-
-          <!-- Mantenemos el bloque bottom por coherencia estructural,
-              pero lo dejamos vacío (o lo puedes borrar si prefieres).
-          -->
-          <div class="about__bottom" aria-hidden="true"></div>
         </div>
       </div>
-    </section>
+
+      <!-- Igual que contact__bottom: lo dejamos por consistencia (vacío) -->
+      <div class="about__bottom" aria-hidden="true"></div>
+    </div>
+  </div>
+</section>
+
 
 
 
@@ -410,10 +414,15 @@
     import { mountFooter } from "/src/js/footer.js";
     import { initExperienceTabs } from "/src/js/experience.js";
     import { initContactCopy } from "/src/js/contact.js";
+    import { mountProjects } from "/src/js/projects.js";
+
+
+
  
     mountHeader({ brandHref: "#home" });
     initExperienceTabs();
     initContactCopy();
+    mountProjects();
     mountFooter();
   </script>
   

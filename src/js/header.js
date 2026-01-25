@@ -6,6 +6,20 @@ const NAV_ITEMS = [
   { label: "Contact", href: "#contact" },
 ];
 
+// Mobile drawer extras
+const MOBILE_ACTIONS = [
+  {
+    label: "LinkedIn ↗",
+    href: "https://www.linkedin.com/in/pere-marquez-barber",
+    attrs: 'target="_blank" rel="noreferrer"',
+  },
+  {
+    label: "Download CV (PDF)",
+    href: "/src/assets/PereMarquez-cv.pdf",
+    attrs: "download",
+  },
+];
+
 function isLandingPage() {
   // Landing: sections exist
   return !!document.querySelector("#home");
@@ -22,41 +36,50 @@ function scrollToId(id) {
   if (!target) return;
 
   const topGap = 26; // your header top spacing
-  const y = target.getBoundingClientRect().top + window.scrollY - (headerHeightPx() + topGap + 14);
+  const y =
+    target.getBoundingClientRect().top +
+    window.scrollY -
+    (headerHeightPx() + topGap + 14);
+
   window.scrollTo({ top: y, behavior: "smooth" });
 }
 
 function setActiveLink(hash) {
-  const headerLinks = document.querySelectorAll('.site-header a[data-nav="1"], .mobile-drawer a[data-nav="1"]');
-  headerLinks.forEach(a => {
+  const headerLinks = document.querySelectorAll(
+    '.site-header a[data-nav="1"], .mobile-drawer a[data-nav="1"]'
+  );
+
+  headerLinks.forEach((a) => {
     const isActive = a.getAttribute("href") === hash;
     a.classList.toggle("is-active", isActive);
   });
 }
 
 function setupActiveObserver() {
-  const ids = NAV_ITEMS.map(i => i.href).filter(h => h.startsWith("#"));
-  const sections = ids.map(id => document.querySelector(id)).filter(Boolean);
+  const ids = NAV_ITEMS.map((i) => i.href).filter((h) => h.startsWith("#"));
+  const sections = ids.map((id) => document.querySelector(id)).filter(Boolean);
   if (!sections.length) return;
 
   const topGap = 26;
   const headerOffset = headerHeightPx() + topGap + 18;
 
-  const observer = new IntersectionObserver((entries) => {
-    // Pick the most visible section
-    const visible = entries
-      .filter(e => e.isIntersecting)
-      .sort((a,b) => b.intersectionRatio - a.intersectionRatio)[0];
+  const observer = new IntersectionObserver(
+    (entries) => {
+      const visible = entries
+        .filter((e) => e.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
 
-    if (!visible) return;
-    setActiveLink(`#${visible.target.id}`);
-  }, {
-    root: null,
-    threshold: [0.2, 0.35, 0.5, 0.65],
-    rootMargin: `-${headerOffset}px 0px -55% 0px`,
-  });
+      if (!visible) return;
+      setActiveLink(`#${visible.target.id}`);
+    },
+    {
+      root: null,
+      threshold: [0.2, 0.35, 0.5, 0.65],
+      rootMargin: `-${headerOffset}px 0px -55% 0px`,
+    }
+  );
 
-  sections.forEach(sec => observer.observe(sec));
+  sections.forEach((sec) => observer.observe(sec));
 }
 
 function setupMobileMenu() {
@@ -81,8 +104,10 @@ function setupMobileMenu() {
   });
 
   drawer.addEventListener("click", (e) => {
+    // Only close+scroll for section links (data-nav="1")
     const a = e.target.closest('a[data-nav="1"]');
     if (!a) return;
+
     close();
 
     if (isLandingPage()) {
@@ -93,13 +118,25 @@ function setupMobileMenu() {
 }
 
 export function mountHeader({ brandHref = "#home" } = {}) {
-  const container = document.querySelector('[data-slot="header"]') || document.body;
+  const container =
+    document.querySelector('[data-slot="header"]') || document.body;
 
   const left = NAV_ITEMS.slice(0, 3);
   const right = NAV_ITEMS.slice(3);
 
   const navLinks = (items) =>
-    items.map(i => `<a data-nav="1" href="${i.href}">${i.label}</a>`).join("");
+    items.map((i) => `<a data-nav="1" href="${i.href}">${i.label}</a>`).join("");
+
+  // Mobile drawer content: nav links + divider + actions (no data-nav)
+  const mobileDrawerHTML = `
+    ${NAV_ITEMS.map((i) => `<a data-nav="1" href="${i.href}">${i.label}</a>`).join("")}
+    <div class="mobile-drawer__divider" aria-hidden="true"></div>
+    <div class="mobile-drawer__actions" aria-label="Quick links">
+      ${MOBILE_ACTIONS.map(
+        (a) => `<a class="mobile-action" href="${a.href}" ${a.attrs || ""}>${a.label}</a>`
+      ).join("")}
+    </div>
+  `;
 
   const headerHTML = `
     <header class="site-header" role="banner">
@@ -107,8 +144,8 @@ export function mountHeader({ brandHref = "#home" } = {}) {
         <nav class="site-nav site-nav--left">${navLinks(left)}</nav>
 
         <a class="site-header__brand" href="${brandHref}" aria-label="Go to home">
-            <span class="brand-first">Pere</span>
-            <span class="brand-last">Márquez</span>
+          <span class="brand-first">Pere</span>
+          <span class="brand-last">Márquez</span>
         </a>
 
         <nav class="site-nav site-nav--right">${navLinks(right)}</nav>
@@ -116,8 +153,8 @@ export function mountHeader({ brandHref = "#home" } = {}) {
 
       <div class="site-header__mobile">
         <a class="mobile-brand" href="${brandHref}" aria-label="Go to home">
-            <span class="brand-first">Pere</span>
-            <span class="brand-last">Márquez</span>
+          <span class="brand-first">Pere</span>
+          <span class="brand-last">Márquez</span>
         </a>
 
         <button class="mobile-toggle" type="button" aria-label="Open menu">
@@ -129,7 +166,7 @@ export function mountHeader({ brandHref = "#home" } = {}) {
     </header>
 
     <div class="mobile-drawer" aria-label="Mobile menu">
-      ${NAV_ITEMS.map(i => `<a data-nav="1" href="${i.href}">${i.label}</a>`).join("")}
+      ${mobileDrawerHTML}
     </div>
   `;
 
@@ -139,6 +176,7 @@ export function mountHeader({ brandHref = "#home" } = {}) {
     container.insertAdjacentHTML("beforeend", headerHTML);
   }
 
+  // Desktop header clicks (smooth scroll)
   document.addEventListener("click", (e) => {
     const a = e.target.closest('.site-header a[data-nav="1"]');
     if (!a) return;

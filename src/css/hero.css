@@ -40,12 +40,6 @@ body.menu-open .hero-chips{
   place-items: center;
 }
 
-.hero-screen:last-child{
-    /* borde inferior únicamente + radios abajo */
-  border-bottom: 4px solid var(--accent);
-  border-bottom-left-radius: 40px;
-  border-bottom-right-radius: 40px;
-}
 .hero-center{
   text-align: center;
   position: relative;
@@ -184,7 +178,7 @@ section{
 }
 
 .hero-second__title .muted{ color: #656565; }
-.hero-second__title .accent{ color: var(--accent); }
+.hero-second__title .accent{ color: var(--accent); font-size: 36px; font-weight: 400; line-height: 0px;}
 
 .hero-second__subtitle{
   margin: 28px 0 0;

@@ -3,3 +3,12 @@
   file_server
   try_files {path} /index.html
 }
+peremarquez.com {
+  redir https://www.peremarquez.com{uri} permanent
+}
+
+www.peremarquez.com {
+  root * /usr/share/caddy
+  file_server
+  try_files {path} /index.html
+}

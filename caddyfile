@@ -1,0 +1,8 @@
+:8080 {
+  root * /usr/share/caddy
+  file_server
+
+  # Si tu web usa rutas tipo /projects/ponte (SPA)
+  # descomenta esto:
+  # try_files {path} /index.html
+}

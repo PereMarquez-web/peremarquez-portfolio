@@ -1,0 +1,319 @@
+/* =========================
+   CONTACT
+   ========================= */
+
+.section-contact{
+  background: var(--bg);
+  padding: 90px 0 120px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+@media (min-width: 900px){
+  .section-contact{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+  }
+  .section-contact .container{ width: 100%; }
+}
+
+/* wrapper */
+.contact{
+  width: 100%;
+}
+
+/* Eyebrow (igual que Experience) */
+.contact__eyebrow{
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.03em;
+  color: var(--ink);
+}
+
+
+/* Tu ajuste desktop para que no quede pegado */
+@media (min-width: 900px){
+  .contact__eyebrow{
+    padding-left: 120px;
+  }
+
+  .contact__grid{
+    margin-top: 86px!important;
+  }
+}
+
+/* Grid centrada */
+.contact__grid{
+  margin-top: 12px; /* ajusta para que coincida con tu Experience */
+  width: min(760px, 100%);
+  justify-self: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* rows */
+.contact__row{
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  column-gap: 24px;
+  padding: 10px 0;
+}
+
+.contact__label{
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: 0.03em;
+  color: var(--ink);
+  opacity: 0.75;
+}
+
+.contact__value{
+  font-family: var(--mono);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: 0.03em;
+  color: var(--ink);
+}
+
+/* Links underline naranja (sutil) */
+.contact__link{
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  text-decoration-color: rgba(255,127,42,0.65);
+}
+
+.contact__link:hover{
+  text-decoration-color: rgba(255,127,42,1);
+  color: var(--ink); /* no cambies a naranja, mantenlo sobrio */
+}
+
+/* Bottom line */
+.contact__bottom{
+  margin-top: 62px;
+  width: min(760px, 100%);
+  margin-left: auto;
+  margin-right: auto;
+
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.contact__note{
+  font-family: var(--mono);
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 22px;
+  letter-spacing: 0.03em;
+  color: var(--ink);
+  opacity: 0.55;
+}
+
+/* Download link: uppercase + underline naranja */
+.contact__download{
+  font-family: var(--mono);
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  text-decoration-color: rgba(255,127,42,0.65);
+}
+
+.contact__download:hover{
+  text-decoration-color: rgba(255,127,42,1);
+}
+
+/* wrapper value + icon */
+.contact__value-wrap{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* copy button */
+.copy-btn{
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: var(--mono);
+  font-size: 24px;
+  line-height: 1;
+  color: #080808;
+  opacity: 0.45;
+
+  transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+.copy-btn:hover{
+  opacity: 1;
+  color: var(--accent);
+}
+
+.copy-btn{
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  font-size: 14px;
+  color: var(--ink);
+  opacity: 0.6;
+  padding: 2px;
+
+  z-index: 5; /* para que el tooltip quede encima */
+}
+
+.copy-btn:hover{ opacity: 1; }
+
+/* Tooltip */
+.copy-btn::after{
+  content: attr(data-tooltip);
+  position: absolute;
+
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+
+  white-space: nowrap;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.03em;
+
+  background: #111;
+  color: #fff;
+  padding: 6px 8px;
+  border-radius: 6px;
+
+  opacity: 0;
+  pointer-events: none;
+
+  transition: opacity .15s ease, transform .15s ease;
+  z-index: 9999;
+}
+
+.copy-btn::before{
+  content: "";
+  position: absolute;
+
+  bottom: calc(100% + 2px);
+  left: 50%;
+  transform: translateX(-50%);
+
+  border: 5px solid transparent;
+  border-top-color: #111;
+
+  opacity: 0;
+  transition: opacity .15s ease;
+  z-index: 9999;
+}
+
+.copy-btn:hover::after,
+.copy-btn:hover::before{
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Estado COPIADO */
+.copy-btn.is-copied::after{
+  background: #1fa971;
+  content: "Copiado al portapapeles";
+}
+.copy-btn.is-copied::before{
+  border-top-color: #1fa971;
+}
+
+/* Tooltip base */
+.copy-btn::after{
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  white-space: nowrap;
+
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.03em;
+
+  background: #111;
+  color: #fff;
+  padding: 6px 8px;
+  border-radius: 6px;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .15s ease, transform .15s ease;
+}
+
+/* Flechita */
+.copy-btn::before{
+  content: "";
+  position: absolute;
+  bottom: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #111;
+  opacity: 0;
+  transition: opacity .15s ease;
+}
+
+.copy-btn:hover::after,
+.copy-btn:hover::before{
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Estado COPIADO */
+.copy-btn.is-copied::after{
+  background: #1fa971;
+  content: "Copied! Feel free to get in touch.";
+}
+
+.copy-btn.is-copied::before{
+  border-top-color: #1fa971;
+}
+
+
+/* copied feedback */
+.copy-btn.copied{
+  color: var(--accent);
+  opacity: 1;
+}
+
+
+/* Responsive */
+@media (max-width: 720px){
+  .contact__grid,
+  .contact__bottom{
+    width: 100%;
+  }
+
+  .contact__row{
+    grid-template-columns: 1fr;
+    row-gap: 6px;
+    padding: 14px 0;
+  }
+
+  .contact__bottom{
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}

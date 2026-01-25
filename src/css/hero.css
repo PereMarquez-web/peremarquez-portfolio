@@ -1,0 +1,329 @@
+/* =========================
+   HERO / HOME
+   ========================= */
+.site-header{
+  z-index: 9999; /* header arriba siempre */
+}
+.section-hero{
+  z-index: 1;
+}
+.hero-chips{
+  z-index: 3; /* chips por encima del hero-center */
+}
+.hero-center{
+  z-index: 2; /* texto centro */
+}
+body.menu-open .hero-chips{
+  pointer-events: none;
+}
+
+.section-hero{
+  position: relative;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* Home = 2 pantallas apiladas */
+
+
+/* La primera pantalla necesita overflow hidden por chips */
+.hero-screen--one{
+  overflow: hidden;
+}
+
+.hero-screen{
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+
+.hero-center{
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+section{
+
+    background-color: var(--bg);
+}
+
+.hero-title{
+  margin: 0;
+  font-family: "Cal Sans", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 400; /* regular */
+  font-size: 140px;
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  color: var(--accent);
+}
+
+.hero-cta{
+  margin-top: 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 14px 18px;
+  border-radius: 12px;
+  background: var(--accent);
+  color: var(--paper);
+  border: 0;
+
+  font-family: "General Sans", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 500; /* Medium */
+  font-size: 24px;
+  line-height: 1;
+
+  cursor: pointer;
+  user-select: none;
+  
+}
+
+.hero-cta:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.18);
+  background-color: var(--accent-accented);
+}
+
+.hero-cta .cta-icon{
+  font-size: 20px;
+  line-height: 1;
+  transform: translateY(-1px);
+}
+
+/* Chips layer */
+.hero-chips{
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none; /* el contenedor no intercepta */
+}
+
+.chip{
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  min-height: 42px;
+  padding: 8px;
+  border-radius: 24px;
+  pointer-events: auto;  
+  cursor: grab;
+  user-select: none;
+  will-change: transform;
+}
+
+.chip:active{ cursor: grabbing; }
+
+/* Left chips (roles) */
+.chip--role{
+  background: rgba(254,255,255,1);
+  border: 1px solid rgba(255,127,42,0.7); /* 70% */
+  color: rgba(255,127,42,0.7);            /* 70% */
+  font-family: var(--mono);
+  font-weight: 600; /* semibold-ish */
+  font-size: 29px;
+  letter-spacing: 0.02em;
+}
+
+/* Right chips (tech) */
+.chip--tech{
+  background: var(--accent);
+  border: 1px solid rgba(255,127,42,1);
+  color: var(--paper);
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 20px;
+  letter-spacing: 0.02em;
+}
+.hero-cta:hover{
+  color: var(--paper);
+}
+.hero-cta{
+  text-decoration: none;
+}
+/* =========================
+   HERO (screen 2)
+   ========================= */
+
+.hero-second{
+  width: 100%;
+  display: grid;
+  place-items: center;
+}
+
+
+.hero-second__inner{
+  width: 100%;
+  padding: 0 20px;
+  text-align: center;
+  height: 100%;
+  display: grid;
+  align-content: center;
+
+  /* un pelín de “aire” para que el border no quede pegado */
+  padding-bottom: 90px;
+}
+
+.hero-second__title{
+  margin: 0;
+  font-family: "General Sans", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 600; /* semibold */
+  font-size: 56px;
+  line-height: 56px;
+  letter-spacing: -0.0005em; /* -0.05% */
+}
+
+.hero-second__title .muted{ color: #656565; }
+.hero-second__title .accent{ color: var(--accent); font-size: 36px; font-weight: 400; line-height: 0px;}
+
+.hero-second__subtitle{
+  margin: 28px 0 0;
+  font-family: "General Sans", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 500; /* medium */
+  font-size: 24px;
+  letter-spacing: 0;
+  color: #656565;
+}
+
+.hero-second__actions{
+  margin-top: 103px;
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+/* Botones reutilizables */
+.btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 18px;
+  border-radius: 12px;
+  font-family: "General Sans", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  user-select: none;
+  text-decoration: none;
+}
+
+.btn--primary{
+  background: var(--accent);
+  color: var(--paper);
+  border: 1px solid var(--accent);
+}
+
+.btn--primary:hover{
+  color: var(--paper);
+}
+
+.btn--ghost{
+  background: var(--paper);
+  color: var(--accent);
+  border: 1px solid var(--accent);
+}
+
+.btn--ghost:hover{
+  color: var(--accent);
+}
+
+/* meta */
+.hero-second__meta{
+  margin-top: 103px;
+  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-size: 22px;
+  color: #A1A1AA;
+  opacity: 0.75;
+  letter-spacing: 0;
+}
+
+/* Responsive */
+@media (max-width: 900px){
+  .hero-second__title{
+    font-size: 40px;
+    line-height: 44px;
+  }
+  .hero-second__subtitle{
+    font-size: 18px;
+  }
+  .btn{
+    font-size: 18px;
+  }
+  .hero-second__meta{
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 520px){
+  .hero-second__inner{
+    padding-bottom: 70px;
+  }
+  .hero-second__actions{
+    margin-top: 60px; /* en móvil queda más compacto */
+    gap: 12px;
+  }
+  .hero-second__meta{
+    margin-top: 60px;
+  }
+}
+
+
+
+/* Responsive */
+@media (max-width: 1100px){
+  .hero-title{ font-size: 92px; }
+  .hero-cta{ font-size: 18px; border-radius: 12px; }
+  .chip-zone{ width: 50%; }
+  .chip--role{ font-size: 22px; }
+  .chip--tech{ font-size: 16px; }
+}
+
+@media (max-width: 720px){
+    .hero-title{ font-size: 64px; }
+    .chip-zone{ width: 52%; }
+    .chip{ height: 40px; padding: 8px 14px; }
+    .chip--role{ font-size: 18px; }
+    .chip--tech{ font-size: 14px; }
+    .hero-chips{
+        opacity: 0.95;
+    }
+
+  .chip{
+    height: 42px;
+    min-height: 42px;
+    padding: 8px 16px;
+    touch-action: none;
+  }
+
+  /* Importante para drag en móvil */
+  .chip{ touch-action: none; }
+
+  /* Posiciones móvil (ganan a inline styles con !important) */
+  #chip-frontend { left: 22px !important; top: 120px !important; right: auto !important; }
+
+  #chip-figma    { right: 120px !important; top: 140px !important; left: auto !important; }
+
+  #chip-webdesign { left: 0px !important; top: 580px !important; left: auto !important; }
+
+  #chip-js    { left: 120px !important; top: 220px !important; right: auto !important; }
+
+  #chip-ecommerce{ left: 22px !important; top: 320px !important; right: auto !important; }
+
+  #chip-wcag     { right: 22px !important; top: 320px !important; left: auto !important; }
+
+  #chip-gsap      { left: 70px !important; top: 790px !important; right: auto !important; }
+  #chip-shopify     { right: 44px !important; top: 850px !important; left: auto !important; }
+  #chip-uxui  { right: 44px !important; top: 620px !important; left: auto !important; }
+
+  #chip-react    { left: 22px !important; top: 690px !important; right: auto !important; }
+
+  #chip-creative { left: 120px !important; top: 730px !important; right: auto !important; }
+}

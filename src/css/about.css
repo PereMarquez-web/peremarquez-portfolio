@@ -1,0 +1,166 @@
+/* =========================
+   ABOUT (same structure as Contact)
+   ========================= */
+
+.section-about{
+  background: var(--bg);
+  padding: 90px 0 120px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+@media (min-width: 900px){
+  .section-about{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+  }
+  .section-about .container{ width: 100%; }
+}
+
+/* wrapper */
+.about{
+  width: 100%;
+}
+
+/* Eyebrow (igual que Contact/Experience) */
+.about__eyebrow{
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.03em;
+  color: var(--ink);
+}
+
+/* Ajuste desktop (idéntico a Contact) */
+@media (min-width: 900px){
+  .about__eyebrow{
+    padding-left: 120px;
+  }
+
+  /* si quieres exactamente el mismo “arranque” que Contact */
+  .about__grid{
+    margin-top: 86px !important;
+  }
+}
+
+/* Grid centrada (igual que Contact, pero más ancha) */
+.about__grid{
+  margin-top: 12px;
+  width: min(980px, 100%);
+  margin-left: auto;
+  margin-right: auto;
+
+  display: grid;
+  gap: 22px;
+}
+
+/* rows (limpios) */
+.about__row{
+  display: block;
+}
+
+/* Base text */
+.about__value{
+  font-family: var(--mono);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: 0.03em;
+  color: var(--ink);
+
+  /* mismo “cuerpo” de lectura que tienes */
+  max-width: 760px;
+}
+
+/* Title */
+.about__title{
+  margin: 0 0 6px;
+  font-family: var(--mono);
+  font-weight: 700;
+  font-size: 37px;
+  line-height: 1.25;
+  letter-spacing: 0.03em;
+  color: var(--ink);
+}
+
+/* Kickers */
+.about__kicker{
+  margin-top: 10px;
+  margin-bottom: 8px;
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: rgba(17,17,17,0.75);
+  text-transform: uppercase;
+}
+
+/* Lists */
+.about__list{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.about__list li{
+  margin: 0 0 4px;
+}
+
+/* Chips */
+.about__chips{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.about__chip{
+  height: 37px;
+  display: inline-flex;
+  align-items: center;
+  padding: 15px 14px;
+  border-radius: 999px;
+
+  border: 1px solid rgba(255,127,42,0.55);
+  background: transparent;
+
+  color: rgba(14,14,17,0.85);
+  font-family: var(--mono);
+  font-weight: 400;
+  font-size: 12px;
+  letter-spacing: 0.03em;
+  line-height: 1;
+}
+
+/* Bottom vacío */
+.about__bottom{
+  height: 0;
+}
+
+/* Responsive */
+@media (max-width: 720px){
+  .section-about{
+    padding: 70px 0 90px;
+    min-height: auto;
+    display: block;
+  }
+
+  .about__grid{
+    width: 100%;
+  }
+
+  .about__title{
+    font-size: 18px;
+  }
+
+  .about__value{
+    font-size: 12px;
+  }
+
+  .about__chip{
+    height: 28px;
+    padding: 6px 14px;
+  }
+}

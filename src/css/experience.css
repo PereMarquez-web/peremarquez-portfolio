@@ -1,0 +1,240 @@
+/* =========================
+   EXPERIENCE (tabs)
+   ========================= */
+
+.section-experience{
+  background: var(--bg);
+  padding: 90px 0 120px;
+}
+
+/* Optional: si quieres que “entre” como bloque 100vh con aire */
+@media (min-width: 900px){
+  .section-experience{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+  }
+
+  .section-experience .container{
+    width: 100%;
+  }
+
+  .experience{
+    margin: 0 auto;
+  }
+
+  .experience__eyebrow{
+    padding-left: 120px;
+  }
+}
+
+.experience__eyebrow{
+  font-family: var(--mono);
+  font-weight: 600; /* semibold */
+  font-size: 14px;
+  letter-spacing: 0.03em;
+  color: var(--ink);
+  margin-bottom: 48px;
+}
+
+.experience__grid{
+    justify-self: center;
+}
+.experience__title h2{
+  margin: 0;
+  font-family: var(--mono);
+  font-weight: 700; /* bold */
+  font-size: 37px;
+  letter-spacing: 0.03em;
+  color: var(--ink);
+}
+
+.experience__content{
+  margin-top: 25px;
+  max-width: 980px;
+}
+
+/* Tabs (subtle editorial) */
+.exp-tabs{
+  display: inline-flex;
+  gap: 18px;
+  align-items: center;
+  margin-top: 8px;
+  margin-bottom: 12px;
+}
+
+.exp-tab{
+  appearance: none;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+
+  font-family: var(--mono);
+  font-weight: 500; /* medium */
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: rgba(17,17,17,0.75);
+
+  position: relative;
+}
+
+.exp-tab::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 1px;
+  background: rgba(255,127,42,0); /* hidden by default */
+  transition: background 180ms ease;
+}
+
+.exp-tab:hover{
+  color: rgba(17,17,17,0.9);
+}
+
+.exp-tab.is-active{
+  color: rgba(17,17,17,0.75);
+}
+
+.exp-tab.is-active::after{
+  background: rgba(255,127,42,0.9); /* active underline */
+}
+
+/* Panels: same typography rules as before */
+.exp-panels{
+  margin-top: 14px;
+}
+
+.exp-panel{
+  /* Nothing fancy: keep it clean */
+}
+
+.exp-item{
+  margin-top: 16px;
+}
+
+.exp-item__title{
+  font-family: var(--mono);
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: 0.03em;
+  color: var(--ink);
+}
+
+.exp-item__date{
+  margin-top: 2px;
+  font-family: var(--mono);
+  font-weight: 300; /* light */
+  font-size: 10px;
+  letter-spacing: 0.03em;
+  color: rgba(14,14,17,0.62);
+}
+
+.exp-item__desc{
+  margin-top: 6px;
+  font-family: var(--mono);
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: 0.03em;
+  color: var(--ink);
+  max-width: 900px;
+}
+
+.exp-item--compact .exp-item__desc{ display:none; }
+
+/* Always visible stack area */
+.exp-stack{
+  margin-top: 28px;
+}
+
+.exp-label{
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: rgba(17,17,17,0.75);
+  margin-bottom: 12px;
+}
+
+/* Chips */
+.exp-chips{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.exp-chip{
+  height: 37px;
+  display: inline-flex;
+  align-items: center;
+  padding: 15px 14px;
+  border-radius: 999px;
+
+  border: 1px solid rgba(255,127,42,0.55);
+  background: transparent;
+
+  color: rgba(14,14,17,0.85);
+  font-family: var(--mono);
+  font-weight: 400;
+  font-size: 12px;
+  letter-spacing: 0.03em;
+}
+
+/* CV link */
+.exp-cv{
+  margin-top: 18px;
+  display: inline-block;
+
+  font-family: var(--mono);
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: rgba(255,127,42,0.9);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+.exp-cv:hover{
+  text-decoration-color: rgba(255,127,42,1);
+}
+
+/* Responsive */
+@media (max-width: 720px){
+  .section-experience{
+    padding: 70px 0 90px;
+    min-height: auto;
+  }
+
+  .experience__eyebrow{
+    margin-bottom: 24px;
+    font-size: 12px;
+  }
+
+  .exp-item__title{
+    font-size: 12px;
+  }
+
+  .exp-item__desc{
+    font-size: 12px;
+  }
+
+  .exp-chip{
+    height: 28px;
+    padding: 6px 14px;
+  }
+
+  .experience__title h2{
+    font-size: 18px;
+  }
+
+  .experience__content{
+    max-width: 100%;
+  }
+}

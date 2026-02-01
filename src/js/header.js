@@ -15,8 +15,8 @@ const MOBILE_ACTIONS = [
   },
   {
     label: "Download CV (PDF)",
-    href: "/src/assets/PereMarquez-cv.pdf",
-    attrs: "download",
+    href: "/PereMarquez-CV.pdf",
+    attrs: 'download="PereMarquez-CV.pdf"',
   },
 ];
 

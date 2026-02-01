@@ -12,7 +12,7 @@ export const PROJECTS = [
     tags: ["Shopify", "Figma", "Marketplaces", "UX Basics"],
     status: "Early",
     rightKicker: "Early concept screens (desktop + mobile)",
-    mockupSrc: "/src/assets/images/mockup-holysnkrs.png",
+    mockupSrc: "/images/mockup-holysnkrs.png",
     mockupAlt: "Holy Snkrs screens",
   },
 
@@ -32,8 +32,8 @@ export const PROJECTS = [
     tags: ["Shopify Liquid", "UX/UI", "Design System", "Conversion"],
     status: "Featured and Deployed",
     rightKicker: "Key screens (desktop + mobile)",
-    mockupSrc: "/src/assets/images/Mockups-PONTE.png",
-    mockupAlt: "/src/assets/images/Mockups-PONTE.png",
+    mockupSrc: "/images/Mockups-PONTE.png",
+    mockupAlt: "/images/Mockups-PONTE.png",
   },
 
   {
@@ -52,7 +52,7 @@ export const PROJECTS = [
     tags: ["API design", "Encryption UX", "Full-stack build", "Deployment"],
     status: "Deployed",
     rightKicker: "Key screens (desktop + mobile)",
-    mockupSrc: "/src/assets/images/mockup-oncesealed.png",
+    mockupSrc: "/images/mockup-oncesealed.png",
     mockupAlt: "Once Sealed screens",
   },
 
@@ -69,7 +69,7 @@ export const PROJECTS = [
     tags: ["Brand translation", "UX Structure", "Visual system"],
     status: "Concept",
     rightKicker: "Scope: homepage + mobile concept + direction",
-    mockupSrc: "/src/assets/images/mockup-hotblazze.png",
+    mockupSrc: "/images/mockup-hotblazze.png",
     mockupAlt: "Hot Blazze screens",
   },
 

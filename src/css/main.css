@@ -16,7 +16,14 @@
 
 *{ box-sizing:border-box; }
 html{ scroll-behavior:smooth; }
-html,body{ height:100%; }
+html, body{
+  width: 100%;
+  overflow-x: hidden;
+}
+
+main{
+  overflow-x: hidden;
+}
 body{
   margin:0;
   font-family:var(--mono);
@@ -33,4 +40,13 @@ a:hover{ color:var(--accent); }
   width:min(var(--max), 100%);
   margin:0 auto;
   padding:0 var(--pad);
+}
+
+section[id]{
+  scroll-margin-top: calc(var(--header-top) + env(safe-area-inset-top) + var(--header-h) + 22px);
+}
+
+body.menu-open{
+  overflow: hidden;
+  touch-action: none;
 }

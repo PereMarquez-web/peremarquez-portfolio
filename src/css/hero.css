@@ -2,16 +2,16 @@
    HERO / HOME
    ========================= */
 .site-header{
-  z-index: 9999; /* header arriba siempre */
+  z-index: 9999;
 }
 .section-hero{
   z-index: 1;
 }
 .hero-chips{
-  z-index: 3; /* chips por encima del hero-center */
+  z-index: 3;
 }
 .hero-center{
-  z-index: 2; /* texto centro */
+  z-index: 2; 
 }
 body.menu-open .hero-chips{
   pointer-events: none;
@@ -24,26 +24,30 @@ body.menu-open .hero-chips{
   overflow: hidden;
 }
 
-/* Home = 2 pantallas apiladas */
-
-
-/* La primera pantalla necesita overflow hidden por chips */
 .hero-screen--one{
-  overflow: hidden;
+  overflow: clip;
 }
 
 .hero-screen{
-  height: 100vh;
+  min-height: 100vh;
+  min-height: 100svh; 
+  min-height: 100dvh;
   width: 100%;
   position: relative;
   display: grid;
   place-items: center;
+
+  padding: env(safe-area-inset-top) 0 env(safe-area-inset-bottom);
+}
+@supports not (overflow: clip){
+  .hero-screen--one{ overflow: hidden; }
 }
 
 .hero-center{
   text-align: center;
   position: relative;
   z-index: 2;
+  padding-inline: 16px;
 }
 
 section{
@@ -54,34 +58,34 @@ section{
 .hero-title{
   margin: 0;
   font-family: "Cal Sans", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-  font-weight: 400; /* regular */
-  font-size: 140px;
+  font-weight: 400;
+  font-size: clamp(56px, 8vw, 140px);
   line-height: 0.92;
   letter-spacing: -0.02em;
   color: var(--accent);
+  text-wrap: balance;
 }
+
 
 .hero-cta{
   margin-top: 18px;
   display: inline-flex;
   align-items: center;
   gap: 10px;
-
   padding: 14px 18px;
   border-radius: 12px;
   background: var(--accent);
   color: var(--paper);
-  border: 0;
-
   font-family: "General Sans", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-  font-weight: 500; /* Medium */
-  font-size: 24px;
+  font-weight: 500;
+  font-size: clamp(16px, 2.2vw, 24px);
   line-height: 1;
-
   cursor: pointer;
   user-select: none;
-  
+  text-decoration: none;
+  transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease;
 }
+
 
 .hero-cta:hover{
   transform: translateY(-4px);
@@ -95,26 +99,33 @@ section{
   transform: translateY(-1px);
 }
 
-/* Chips layer */
 .hero-chips{
   position: absolute;
   inset: 0;
-  z-index: 1;
-  pointer-events: none; /* el contenedor no intercepta */
+  z-index: 3;
+  pointer-events: none;
 }
 
 .chip{
   position: absolute;
+  
+  left: var(--x);
+  top: var(--y);
+  transform: translate(-50%, -50%);
+  
   display: inline-flex;
   align-items: center;
   min-height: 42px;
-  padding: 8px;
-  border-radius: 24px;
-  pointer-events: auto;  
+  padding: 8px 16px;
+  border-radius: 999px;
+
+  pointer-events: auto;
   cursor: grab;
   user-select: none;
   will-change: transform;
+  max-width: min(85vw, 420px);
 }
+
 
 .chip:active{ cursor: grabbing; }
 
@@ -125,7 +136,7 @@ section{
   color: rgba(255,127,42,0.7);            /* 70% */
   font-family: var(--mono);
   font-weight: 600; /* semibold-ish */
-  font-size: 29px;
+  font-size: clamp(14px, 2.4vw, 22px);
   letter-spacing: 0.02em;
 }
 
@@ -136,7 +147,7 @@ section{
   color: var(--paper);
   font-family: var(--mono);
   font-weight: 600;
-  font-size: 20px;
+  font-size: clamp(12px, 2vw, 16px);
   letter-spacing: 0.02em;
 }
 .hero-cta:hover{
@@ -306,24 +317,15 @@ section{
   /* Importante para drag en móvil */
   .chip{ touch-action: none; }
 
-  /* Posiciones móvil (ganan a inline styles con !important) */
-  #chip-frontend { left: 22px !important; top: 120px !important; right: auto !important; }
-
-  #chip-figma    { right: 120px !important; top: 140px !important; left: auto !important; }
-
-  #chip-webdesign { left: 0px !important; top: 580px !important; left: auto !important; }
-
-  #chip-js    { left: 120px !important; top: 220px !important; right: auto !important; }
-
-  #chip-ecommerce{ left: 22px !important; top: 320px !important; right: auto !important; }
-
-  #chip-wcag     { right: 22px !important; top: 320px !important; left: auto !important; }
-
-  #chip-gsap      { left: 70px !important; top: 790px !important; right: auto !important; }
-  #chip-shopify     { right: 44px !important; top: 850px !important; left: auto !important; }
-  #chip-uxui  { right: 44px !important; top: 620px !important; left: auto !important; }
-
-  #chip-react    { left: 22px !important; top: 690px !important; right: auto !important; }
-
-  #chip-creative { left: 120px !important; top: 730px !important; right: auto !important; }
+  #chip-frontend { --x: 22%; --y: 18%; }
+  #chip-figma    { --x: 74%; --y: 22%; }
+  #chip-js       { --x: 35%; --y: 30%; }
+  #chip-react    { --x: 22%; --y: 64%; }
+  #chip-uxui     { --x: 78%; --y: 58%; }
+  #chip-webdesign{ --x: 64%; --y: 44%; }
+  #chip-ecommerce{ --x: 30%; --y: 40%; }
+  #chip-wcag     { --x: 78%; --y: 40%; }
+  #chip-gsap     { --x: 28%; --y: 78%; }
+  #chip-shopify  { --x: 72%; --y: 82%; }
+  #chip-creative { --x: 60%; --y: 72%; }
 }

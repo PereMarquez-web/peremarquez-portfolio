@@ -5,8 +5,10 @@
 :root{
   --radius-xl: 48px;
   --header-h: 61px;
-  --header-top: 26px;
-  --header-pad-x: 36px;
+
+  --header-top: clamp(12px, 2.5vh, 26px);
+
+  --header-pad-x: clamp(18px, 3vw, 36px);
   --header-pad-y: 10px;
 }
 
@@ -15,6 +17,8 @@
    ========================= */
 
 .site-header{
+  top: calc(var(--header-top) + env(safe-area-inset-top));
+
   position: fixed;
   top: var(--header-top);
   left: 50%;
@@ -180,13 +184,17 @@
 /* =========================
    MOBILE DRAWER
    ========================= */
+.site-header,
+.mobile-drawer{
+  isolation: isolate;
+}
 
 .mobile-drawer{
   position: fixed;
-  top: calc(var(--header-top) + var(--header-h) + 10px);
+  top: calc(var(--header-top) + env(safe-area-inset-top) + var(--header-h) + 10px);
   left: 50%;
-  transform: translateX(-50%);
-  z-index: 1000;
+  transform: translateX(-50%) translateY(-6px);
+  z-index: 9999;
 
   width: min(var(--max), calc(100% - 2 * var(--pad)));
   background: var(--header);
@@ -196,13 +204,15 @@
   opacity: 0;
   pointer-events: none;
   transform-origin: top;
-  transition: opacity .18s ease;
+  transition: opacity .18s ease, transform .18s ease;
 }
 
 .site-header.is-open + .mobile-drawer{
   opacity: 1;
   pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
 }
+
 
 /* Drawer links */
 .mobile-drawer a{
@@ -230,7 +240,7 @@
 .mobile-drawer__divider{
   margin: 14px 0;
   height: 1px;
-  background: rgba(17,17,17,0.10);
+  background: rgba(255,255,255,0.12);
 }
 
 .mobile-drawer__actions{

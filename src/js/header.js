@@ -88,8 +88,15 @@ function setupMobileMenu() {
   const btn = document.querySelector(".mobile-toggle");
   if (!header || !drawer || !btn) return;
 
-  const close = () => header.classList.remove("is-open");
-  const toggle = () => header.classList.toggle("is-open");
+  const close = () => {
+    header.classList.remove("is-open");
+    document.body.classList.remove("menu-open");
+  };
+
+  const toggle = () => {
+    header.classList.toggle("is-open");
+    document.body.classList.toggle("menu-open", header.classList.contains("is-open"));
+  };
 
   btn.addEventListener("click", toggle);
 

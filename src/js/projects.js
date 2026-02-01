@@ -198,14 +198,20 @@ function initProjectsStepScroll() {
 
   if (!section || !track || panels.length < 2) return;
 
-  // cleanup previous
-  if (projectsObs) { projectsObs.kill(); projectsObs = null; }
-  if (projectsST) { projectsST.kill(true); projectsST = null; }
-  if (onResize) { window.removeEventListener("resize", onResize); onResize = null; }
+  const isMobile = window.matchMedia("(max-width: 980px)").matches;
+  const isTouch = ScrollTrigger.isTouch === 1;
+
+  if (isMobile || isTouch) {
+    if (projectsObs) { projectsObs.kill(); projectsObs = null; }
+    if (projectsST) { projectsST.kill(true); projectsST = null; }
+    if (onResize) { window.removeEventListener("resize", onResize); onResize = null; }
+
+    gsap.set(track, { clearProps: "transform,x" });
+    return;
+  }
 
   const total = panels.length;
 
-  // CONFIG
   const THRESHOLD = 60;
   const RESET_MS = 140;
   const COOLDOWN_MS = 900;
